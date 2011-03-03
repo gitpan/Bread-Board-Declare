@@ -1,6 +1,6 @@
 package Bread::Board::Declare;
 BEGIN {
-  $Bread::Board::Declare::VERSION = '0.01';
+  $Bread::Board::Declare::VERSION = '0.02';
 }
 use Moose::Exporter;
 # ABSTRACT: create Bread::Board containers as normal Moose objects
@@ -49,7 +49,7 @@ Bread::Board::Declare - create Bread::Board containers as normal Moose objects
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
@@ -122,7 +122,8 @@ corresponding to the type constraint.
 
 =item
 
-Otherwise, no service is created.
+Otherwise, a BlockInjection service is created which throws an exception. This allows services to be created for the sole purpose of being set through the attribute, without requiring a default to be specified. Note that
+C<< required => 1 >> is still valid on these attributes.
 
 =back
 
@@ -164,6 +165,8 @@ C<bug-bread-board-declare at rt.cpan.org>, or browse to
 L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Bread-Board-Declare>.
 
 =head1 SEE ALSO
+
+Please see those modules/websites for more information related to this module.
 
 =over 4
 

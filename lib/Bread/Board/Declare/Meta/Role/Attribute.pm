@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Meta::Role::Attribute;
 BEGIN {
-  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.01';
+  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.02';
 }
 use Moose::Role;
 Moose::Util::meta_attribute_alias('Service');
@@ -85,6 +85,8 @@ after attach_to_class => sub {
             : ()),
     );
 
+    my $tc = $self->has_type_constraint ? $self->type_constraint : undef;
+
     my $service;
     if ($self->has_block) {
         $service = Bread::Board::Declare::BlockInjection->new(
@@ -98,14 +100,21 @@ after attach_to_class => sub {
             value => $self->literal_value,
         );
     }
-    elsif ($self->has_type_constraint) {
-        my $tc = $self->type_constraint;
-        if ($tc->isa('Moose::Meta::TypeConstraint::Class')) {
-            $service = Bread::Board::Declare::ConstructorInjection->new(
-                %params,
-                class => $tc->class,
-            );
-        }
+    elsif ($tc && $tc->isa('Moose::Meta::TypeConstraint::Class')) {
+        $service = Bread::Board::Declare::ConstructorInjection->new(
+            %params,
+            class => $tc->class,
+        );
+    }
+    else {
+        $service = Bread::Board::Declare::BlockInjection->new(
+            %params,
+            block => sub {
+                die "Attribute " . $self->name . " did not specify a service."
+                  . " It must be given a value through the constructor or"
+                  . " writer method before it can be resolved."
+            },
+        );
     }
 
     $self->associated_service($service) if $service;
@@ -205,7 +214,7 @@ Bread::Board::Declare::Meta::Role::Attribute - attribute metarole for Bread::Boa
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 DESCRIPTION
 
@@ -248,11 +257,13 @@ The service object that is associated with this attribute.
 
 =head1 SEE ALSO
 
+Please see those modules/websites for more information related to this module.
+
 =over 4
 
 =item *
 
-L<Bread::Board::Declare>
+L<Bread::Board::Declare|Bread::Board::Declare>
 
 =back
 

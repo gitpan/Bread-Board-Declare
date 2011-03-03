@@ -31,6 +31,7 @@ t/31-auto-deref.t
 t/32-defaults.t
 t/33-constructor-name.t
 t/34-extends.t
+t/35-no-service.t
 t/40-mop.t
 t/release-eol.t
 t/release-no-tabs.t
