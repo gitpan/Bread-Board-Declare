@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Role::Service;
 BEGIN {
-  $Bread::Board::Declare::Role::Service::VERSION = '0.02';
+  $Bread::Board::Declare::Role::Service::VERSION = '0.03';
 }
 use Moose::Role;
 # ABSTRACT: role for Bread::Board::Service objects
@@ -55,7 +55,7 @@ Bread::Board::Declare::Role::Service - role for Bread::Board::Service objects
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 DESCRIPTION
 

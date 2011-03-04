@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Meta::Role::Attribute;
 BEGIN {
-  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.02';
+  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.03';
 }
 use Moose::Role;
 Moose::Util::meta_attribute_alias('Service');
@@ -180,9 +180,9 @@ if (Moose->VERSION > 1.9900) {
                 . '}' . "\n"
                 . 'else {' . "\n"
                     . '$val = ' . $instance . '->get_service(\'' . $self->name . '\')->get;' . "\n"
-                    . $self->_inline_check_constraint(
+                    . join("\n", $self->_inline_check_constraint(
                         '$val', '$type_constraint', '$type_constraint_obj'
-                    )
+                    )) . "\n"
                 . '}' . "\n"
                 . '$val' . "\n"
             . '}';
@@ -214,7 +214,7 @@ Bread::Board::Declare::Meta::Role::Attribute - attribute metarole for Bread::Boa
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 DESCRIPTION
 

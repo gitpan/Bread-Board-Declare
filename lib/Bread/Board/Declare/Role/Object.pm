@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Role::Object;
 BEGIN {
-  $Bread::Board::Declare::Role::Object::VERSION = '0.02';
+  $Bread::Board::Declare::Role::Object::VERSION = '0.03';
 }
 use Moose::Role;
 
@@ -48,7 +48,7 @@ Bread::Board::Declare::Role::Object
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =for Pod::Coverage BUILD
 

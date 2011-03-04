@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Meta::Role::Class;
 BEGIN {
-  $Bread::Board::Declare::Meta::Role::Class::VERSION = '0.02';
+  $Bread::Board::Declare::Meta::Role::Class::VERSION = '0.03';
 }
 use Moose::Role;
 # ABSTRACT: class metarole for Bread::Board::Declare
@@ -46,7 +46,7 @@ Bread::Board::Declare::Meta::Role::Class - class metarole for Bread::Board::Decl
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 DESCRIPTION
 

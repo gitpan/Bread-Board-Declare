@@ -1,6 +1,6 @@
 package Bread::Board::Declare::BlockInjection;
 BEGIN {
-  $Bread::Board::Declare::BlockInjection::VERSION = '0.02';
+  $Bread::Board::Declare::BlockInjection::VERSION = '0.03';
 }
 use Moose;
 # ABSTRACT: subclass of Bread::Board::BlockInjection for Bread::Board::Declare
@@ -23,7 +23,7 @@ Bread::Board::Declare::BlockInjection - subclass of Bread::Board::BlockInjection
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 DESCRIPTION
 
