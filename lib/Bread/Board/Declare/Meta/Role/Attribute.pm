@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Meta::Role::Attribute;
 BEGIN {
-  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.03';
+  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.04';
 }
 use Moose::Role;
 Moose::Util::meta_attribute_alias('Service');
@@ -214,7 +214,7 @@ Bread::Board::Declare::Meta::Role::Attribute - attribute metarole for Bread::Boa
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 DESCRIPTION
 
