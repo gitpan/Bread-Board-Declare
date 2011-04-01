@@ -14,11 +14,11 @@ meta-spec:
   version: 1.4
 name: Bread-Board-Declare
 requires:
-  Bread::Board: 0
+  Bread::Board: 0.17
   Moose: 1.21
 resources:
   repository: git://github.com/doy/bread-board-declare.git
-version: 0.04
+version: 0.05
 x_Dist_Zilla:
   plugins:
     -

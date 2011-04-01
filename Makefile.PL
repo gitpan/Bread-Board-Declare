@@ -22,10 +22,10 @@ my %WriteMakefileArgs = (
   'LICENSE' => 'perl',
   'NAME' => 'Bread::Board::Declare',
   'PREREQ_PM' => {
-    'Bread::Board' => '0',
+    'Bread::Board' => '0.17',
     'Moose' => '1.21'
   },
-  'VERSION' => '0.04',
+  'VERSION' => '0.05',
   'test' => {
     'TESTS' => 't/*.t'
   }

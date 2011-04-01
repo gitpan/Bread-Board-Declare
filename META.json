@@ -21,7 +21,7 @@
       },
       "runtime" : {
          "requires" : {
-            "Bread::Board" : 0,
+            "Bread::Board" : "0.17",
             "Moose" : "1.21"
          }
       },
@@ -39,7 +39,7 @@
          "web" : "http://github.com/doy/bread-board-declare"
       }
    },
-   "version" : "0.04",
+   "version" : "0.05",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
