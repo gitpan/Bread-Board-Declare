@@ -23,6 +23,7 @@ t/03-lifecycle.t
 t/04-block.t
 t/10-inlining.t
 t/11-multiple-instantiation.t
+t/12-circular-dependency.t
 t/20-inheritance.t
 t/21-roles.t
 t/22-more-inheritance.t

@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Meta::Role::Attribute;
 BEGIN {
-  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.05';
+  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.06';
 }
 use Moose::Role;
 Moose::Util::meta_attribute_alias('Service');
@@ -89,6 +89,9 @@ after attach_to_class => sub {
 
     my $service;
     if ($self->has_block) {
+        if ($tc && $tc->isa('Moose::Meta::TypeConstraint::Class')) {
+            %params = (%params, class => $tc->class);
+        }
         $service = Bread::Board::Declare::BlockInjection->new(
             %params,
             block => $self->block,
@@ -214,7 +217,7 @@ Bread::Board::Declare::Meta::Role::Attribute - attribute metarole for Bread::Boa
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 DESCRIPTION
 

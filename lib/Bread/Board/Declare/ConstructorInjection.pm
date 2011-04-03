@@ -1,6 +1,6 @@
 package Bread::Board::Declare::ConstructorInjection;
 BEGIN {
-  $Bread::Board::Declare::ConstructorInjection::VERSION = '0.05';
+  $Bread::Board::Declare::ConstructorInjection::VERSION = '0.06';
 }
 use Moose;
 # ABSTRACT: subclass of Bread::Board::ConstructorInjection for Bread::Board::Declare
@@ -23,7 +23,7 @@ Bread::Board::Declare::ConstructorInjection - subclass of Bread::Board::Construc
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 DESCRIPTION
 

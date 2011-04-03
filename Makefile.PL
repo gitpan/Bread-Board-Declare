@@ -25,7 +25,7 @@ my %WriteMakefileArgs = (
     'Bread::Board' => '0.17',
     'Moose' => '1.21'
   },
-  'VERSION' => '0.05',
+  'VERSION' => '0.06',
   'test' => {
     'TESTS' => 't/*.t'
   }
