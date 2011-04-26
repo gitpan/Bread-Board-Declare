@@ -1,6 +1,6 @@
 package Bread::Board::Declare;
 BEGIN {
-  $Bread::Board::Declare::VERSION = '0.06';
+  $Bread::Board::Declare::VERSION = '0.07';
 }
 use Moose::Exporter;
 # ABSTRACT: create Bread::Board containers as normal Moose objects
@@ -49,7 +49,7 @@ Bread::Board::Declare - create Bread::Board containers as normal Moose objects
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -165,8 +165,6 @@ C<bug-bread-board-declare at rt.cpan.org>, or browse to
 L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Bread-Board-Declare>.
 
 =head1 SEE ALSO
-
-Please see those modules/websites for more information related to this module.
 
 =over 4
 

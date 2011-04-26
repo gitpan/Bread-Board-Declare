@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Literal;
 BEGIN {
-  $Bread::Board::Declare::Literal::VERSION = '0.06';
+  $Bread::Board::Declare::Literal::VERSION = '0.07';
 }
 use Moose;
 # ABSTRACT: subclass of Bread::Board::Literal for Bread::Board::Declare
@@ -23,7 +23,7 @@ Bread::Board::Declare::Literal - subclass of Bread::Board::Literal for Bread::Bo
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 DESCRIPTION
 
@@ -33,13 +33,11 @@ details.
 
 =head1 SEE ALSO
 
-Please see those modules/websites for more information related to this module.
-
 =over 4
 
 =item *
 
-L<Bread::Board::Declare|Bread::Board::Declare>
+L<Bread::Board::Declare>
 
 =back
 
