@@ -1,5 +1,9 @@
 Revision history for Bread-Board-Declare
 
+0.08  2011-06-01
+      - allow inferring dependencies for constructor injection services
+        (infer => 1 in the attribute definition)
+
 0.07  2011-04-26
       - fix test suite for upcoming moose error message changes
 

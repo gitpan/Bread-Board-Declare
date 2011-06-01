@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Role::Object;
 BEGIN {
-  $Bread::Board::Declare::Role::Object::VERSION = '0.07';
+  $Bread::Board::Declare::Role::Object::VERSION = '0.08';
 }
 use Moose::Role;
 
@@ -17,6 +17,11 @@ after BUILD => sub {
 
     my $meta = Class::MOP::class_of($self);
 
+    my %seen = (
+        map { $_->class => $_->name }
+            grep { $_->isa('Bread::Board::Declare::ConstructorInjection') && Class::MOP::class_of($_->class) }
+                 $meta->get_all_services
+    );
     for my $service ($meta->get_all_services) {
         if ($service->isa('Bread::Board::Declare::BlockInjection')) {
             my $block = $service->block;
@@ -27,6 +32,17 @@ after BUILD => sub {
                     },
                 )
             );
+        }
+        elsif ($service->isa('Bread::Board::Declare::ConstructorInjection')
+            && $service->associated_attribute->infer
+            && (my $meta = Class::MOP::class_of($service->class))) {
+            my $inferred = Bread::Board::Service::Inferred->new(
+                current_container => $self,
+                service           => $service->clone,
+            )->infer_service($service->class, \%seen);
+
+            $self->add_service($inferred);
+            $self->add_type_mapping_for($service->class, $inferred);
         }
         else {
             $self->add_service($service->clone);
@@ -48,17 +64,19 @@ Bread::Board::Declare::Role::Object
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =for Pod::Coverage BUILD
 
 =head1 SEE ALSO
 
+Please see those modules/websites for more information related to this module.
+
 =over 4
 
 =item *
 
-L<Bread::Board::Declare>
+L<Bread::Board::Declare|Bread::Board::Declare>
 
 =back
 

@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Meta::Role::Attribute;
 BEGIN {
-  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.07';
+  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.08';
 }
 use Moose::Role;
 Moose::Util::meta_attribute_alias('Service');
@@ -53,6 +53,12 @@ has dependencies => (
 );
 
 
+has infer => (
+    is  => 'ro',
+    isa => 'Bool',
+);
+
+
 has constructor_name => (
     is        => 'ro',
     isa       => 'Str',
@@ -91,6 +97,7 @@ after attach_to_class => sub {
     if ($self->has_block) {
         if ($tc && $tc->isa('Moose::Meta::TypeConstraint::Class')) {
             %params = (%params, class => $tc->class);
+            Class::MOP::load_class($tc->class);
         }
         $service = Bread::Board::Declare::BlockInjection->new(
             %params,
@@ -104,6 +111,7 @@ after attach_to_class => sub {
         );
     }
     elsif ($tc && $tc->isa('Moose::Meta::TypeConstraint::Class')) {
+        Class::MOP::load_class($tc->class);
         $service = Bread::Board::Declare::ConstructorInjection->new(
             %params,
             class => $tc->class,
@@ -184,7 +192,11 @@ if (Moose->VERSION > 1.9900) {
                 . 'else {' . "\n"
                     . '$val = ' . $instance . '->get_service(\'' . $self->name . '\')->get;' . "\n"
                     . join("\n", $self->_inline_check_constraint(
-                        '$val', '$type_constraint', '$type_constraint_obj'
+                        '$val',
+                        '$type_constraint',
+                        (Moose->VERSION >= 2.0100
+                            ? '$type_message'
+                            : '$type_constraint_obj'),
                     )) . "\n"
                 . '}' . "\n"
                 . '$val' . "\n"
@@ -217,7 +229,7 @@ Bread::Board::Declare::Meta::Role::Attribute - attribute metarole for Bread::Boa
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 DESCRIPTION
 
@@ -249,6 +261,13 @@ and L<Bread::Board::LifeCycle>.
 The dependency specification to use when creating the service. See
 L<Bread::Board::Service::WithDependencies>.
 
+=head2 infer
+
+If true, the dependency list will be inferred as much as possible from the
+attributes in the class. See L<Bread::Board::Manual::Concepts::Typemap> for
+more information. Note that this is only valid for constructor injection
+services.
+
 =head2 constructor_name
 
 The constructor name to use when creating L<Bread::Board::ConstructorInjection>
@@ -260,11 +279,13 @@ The service object that is associated with this attribute.
 
 =head1 SEE ALSO
 
+Please see those modules/websites for more information related to this module.
+
 =over 4
 
 =item *
 
-L<Bread::Board::Declare>
+L<Bread::Board::Declare|Bread::Board::Declare>
 
 =back
 

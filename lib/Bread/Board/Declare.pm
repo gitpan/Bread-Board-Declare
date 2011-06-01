@@ -1,6 +1,6 @@
 package Bread::Board::Declare;
 BEGIN {
-  $Bread::Board::Declare::VERSION = '0.07';
+  $Bread::Board::Declare::VERSION = '0.08';
 }
 use Moose::Exporter;
 # ABSTRACT: create Bread::Board containers as normal Moose objects
@@ -49,7 +49,7 @@ Bread::Board::Declare - create Bread::Board containers as normal Moose objects
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 
@@ -131,6 +131,12 @@ Constructor parameters for services (C<dependencies>, C<lifecycle>, etc) can
 also be passed into the attribute definition; these will be forwarded to the
 service constructor.
 
+If C<< infer => 1 >> is passed in the attribute definition, the class in the
+type constraint will be introspected to find its required dependencies, and
+those dependencies will be automatically fulfilled as much as possible by
+corresponding services in the container. See
+L<Bread::Board::Manual::Concepts::Typemap> for more information.
+
 In addition to creating the services, this module also modifies the attribute
 reader generation, so that if the attribute has no value, a value will be
 resolved from the associated service. It also modifies the C<get> method on
@@ -165,6 +171,8 @@ C<bug-bread-board-declare at rt.cpan.org>, or browse to
 L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Bread-Board-Declare>.
 
 =head1 SEE ALSO
+
+Please see those modules/websites for more information related to this module.
 
 =over 4
 

@@ -4,7 +4,7 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
@@ -12,20 +12,21 @@ my %WriteMakefileArgs = (
   'ABSTRACT' => 'create Bread::Board containers as normal Moose objects',
   'AUTHOR' => 'Jesse Luehrs <doy at tozt dot net>',
   'BUILD_REQUIRES' => {
+    'Test::Fatal' => '0',
     'Test::More' => '0.88'
   },
   'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+    'ExtUtils::MakeMaker' => '6.30'
   },
   'DISTNAME' => 'Bread-Board-Declare',
   'EXE_FILES' => [],
   'LICENSE' => 'perl',
   'NAME' => 'Bread::Board::Declare',
   'PREREQ_PM' => {
-    'Bread::Board' => '0.17',
+    'Bread::Board' => '0.19',
     'Moose' => '1.21'
   },
-  'VERSION' => '0.07',
+  'VERSION' => '0.08',
   'test' => {
     'TESTS' => 't/*.t'
   }

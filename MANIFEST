@@ -34,6 +34,10 @@ t/33-constructor-name.t
 t/34-extends.t
 t/35-no-service.t
 t/40-mop.t
+t/50-infer.t
+t/51-infer-loading.t
+t/lib/Inferred/Bar.pm
+t/lib/Inferred/Foo.pm
 t/release-eol.t
 t/release-no-tabs.t
 t/release-pod-coverage.t
