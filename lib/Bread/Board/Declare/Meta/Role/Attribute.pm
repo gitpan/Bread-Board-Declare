@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Meta::Role::Attribute;
 BEGIN {
-  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.08';
+  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.09';
 }
 use Moose::Role;
 Moose::Util::meta_attribute_alias('Service');
@@ -32,7 +32,7 @@ has block => (
 # has_value is already a method
 has literal_value => (
     is        => 'ro',
-    isa       => 'Str|CodeRef',
+    isa       => 'Value',
     init_arg  => 'value',
     predicate => 'has_literal_value',
 );
@@ -160,8 +160,12 @@ around get_value => sub {
 
     my $val = $instance->get_service($self->name)->get;
 
-    $self->verify_against_type_constraint($val, instance => $instance)
-        if $self->has_type_constraint;
+    if ($self->has_type_constraint) {
+        $val = $self->type_constraint->coerce($val)
+            if $self->should_coerce;
+
+        $self->verify_against_type_constraint($val, instance => $instance);
+    }
 
     if ($self->should_auto_deref) {
         if (ref($val) eq 'ARRAY') {
@@ -229,7 +233,7 @@ Bread::Board::Declare::Meta::Role::Attribute - attribute metarole for Bread::Boa
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 DESCRIPTION
 

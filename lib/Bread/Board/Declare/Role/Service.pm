@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Role::Service;
 BEGIN {
-  $Bread::Board::Declare::Role::Service::VERSION = '0.08';
+  $Bread::Board::Declare::Role::Service::VERSION = '0.09';
 }
 use Moose::Role;
 # ABSTRACT: role for Bread::Board::Service objects
@@ -26,8 +26,13 @@ around get => sub {
     }
 
     my $val = $self->$orig(@_);
-    $attr->verify_against_type_constraint($val, instance => $container)
-        if $attr->has_type_constraint;
+
+    if ($attr->has_type_constraint) {
+        $val = $attr->type_constraint->coerce($val)
+            if $attr->should_coerce;
+
+        $attr->verify_against_type_constraint($val, instance => $container);
+    }
 
     return $val;
 };
@@ -60,7 +65,7 @@ Bread::Board::Declare::Role::Service - role for Bread::Board::Service objects
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 DESCRIPTION
 

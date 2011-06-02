@@ -1,6 +1,6 @@
 package Bread::Board::Declare;
 BEGIN {
-  $Bread::Board::Declare::VERSION = '0.08';
+  $Bread::Board::Declare::VERSION = '0.09';
 }
 use Moose::Exporter;
 # ABSTRACT: create Bread::Board containers as normal Moose objects
@@ -49,7 +49,7 @@ Bread::Board::Declare - create Bread::Board containers as normal Moose objects
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 
@@ -129,7 +129,8 @@ C<< required => 1 >> is still valid on these attributes.
 
 Constructor parameters for services (C<dependencies>, C<lifecycle>, etc) can
 also be passed into the attribute definition; these will be forwarded to the
-service constructor.
+service constructor. See L<Bread::Board::Declare::Meta::Role::Attribute> for
+a full list of additional parameters to C<has>.
 
 If C<< infer => 1 >> is passed in the attribute definition, the class in the
 type constraint will be introspected to find its required dependencies, and

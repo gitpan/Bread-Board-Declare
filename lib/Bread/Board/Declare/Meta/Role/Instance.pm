@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Meta::Role::Instance;
 BEGIN {
-  $Bread::Board::Declare::Meta::Role::Instance::VERSION = '0.08';
+  $Bread::Board::Declare::Meta::Role::Instance::VERSION = '0.09';
 }
 use Moose::Role;
 
@@ -21,7 +21,7 @@ Bread::Board::Declare::Meta::Role::Instance
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =for Pod::Coverage inline_get_is_lvalue
 

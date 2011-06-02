@@ -19,7 +19,7 @@ requires:
   Moose: 1.21
 resources:
   repository: git://github.com/doy/bread-board-declare.git
-version: 0.08
+version: 0.09
 x_Dist_Zilla:
   plugins:
     -

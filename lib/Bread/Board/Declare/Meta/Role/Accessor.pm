@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Meta::Role::Accessor;
 BEGIN {
-  $Bread::Board::Declare::Meta::Role::Accessor::VERSION = '0.08';
+  $Bread::Board::Declare::Meta::Role::Accessor::VERSION = '0.09';
 }
 use Moose::Role;
 
@@ -37,7 +37,7 @@ Bread::Board::Declare::Meta::Role::Accessor
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SEE ALSO
 

@@ -1,7 +1,7 @@
 
 
 This archive contains the distribution Bread-Board-Declare,
-version 0.08:
+version 0.09:
 
   create Bread::Board containers as normal Moose objects
 
