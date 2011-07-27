@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Role::Object;
 BEGIN {
-  $Bread::Board::Declare::Role::Object::VERSION = '0.09';
+  $Bread::Board::Declare::Role::Object::VERSION = '0.10';
 }
 use Moose::Role;
 
@@ -39,6 +39,7 @@ after BUILD => sub {
             my $inferred = Bread::Board::Service::Inferred->new(
                 current_container => $self,
                 service           => $service->clone,
+                infer_params      => 1,
             )->infer_service($service->class, \%seen);
 
             $self->add_service($inferred);
@@ -64,7 +65,7 @@ Bread::Board::Declare::Role::Object
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =for Pod::Coverage BUILD
 

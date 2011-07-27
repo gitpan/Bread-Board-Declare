@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Meta::Role::Attribute;
 BEGIN {
-  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.09';
+  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.10';
 }
 use Moose::Role;
 Moose::Util::meta_attribute_alias('Service');
@@ -53,6 +53,14 @@ has dependencies => (
 );
 
 
+has parameters => (
+    is        => 'ro',
+    isa       => 'Bread::Board::Service::Parameters',
+    coerce    => 1,
+    predicate => 'has_parameters',
+);
+
+
 has infer => (
     is  => 'ro',
     isa => 'Bool',
@@ -85,6 +93,9 @@ after attach_to_class => sub {
             : ()),
         ($self->has_dependencies
             ? (dependencies => $self->dependencies)
+            : ()),
+        ($self->has_parameters
+            ? (parameters => $self->parameters)
             : ()),
         ($self->has_constructor_name
             ? (constructor_name => $self->constructor_name)
@@ -233,7 +244,7 @@ Bread::Board::Declare::Meta::Role::Attribute - attribute metarole for Bread::Boa
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 DESCRIPTION
 
@@ -264,6 +275,10 @@ and L<Bread::Board::LifeCycle>.
 
 The dependency specification to use when creating the service. See
 L<Bread::Board::Service::WithDependencies>.
+
+=head2 parameters
+
+The parameter specification to use when creating the service. See L<Bread::Board::Service::WithParameters>.
 
 =head2 infer
 

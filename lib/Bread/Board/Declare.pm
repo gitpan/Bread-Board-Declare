@@ -1,6 +1,6 @@
 package Bread::Board::Declare;
 BEGIN {
-  $Bread::Board::Declare::VERSION = '0.09';
+  $Bread::Board::Declare::VERSION = '0.10';
 }
 use Moose::Exporter;
 # ABSTRACT: create Bread::Board containers as normal Moose objects
@@ -49,7 +49,7 @@ Bread::Board::Declare - create Bread::Board containers as normal Moose objects
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 
