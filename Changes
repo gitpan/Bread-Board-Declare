@@ -1,5 +1,14 @@
 Revision history for Bread-Board-Declare
 
+0.11  2012-01-26
+      - dependencies can now be specified inline with the dep() function
+      - type inference can now infer dependencies that are non-moose classes,
+        and dependencies which are created by block injections (as long as the
+        class is also specified)
+      - Bread::Board::Declare classes can now specify subcontainers - see
+        Bread::Board::Declare::Meta::Role::Attribute::Container and
+        t/subcontainers.t for more details
+
 0.10  2011-07-27
       - bump Bread::Board prereq due to a bug
       - allow specifying parameters for services

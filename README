@@ -1,11 +1,11 @@
 
 
 This archive contains the distribution Bread-Board-Declare,
-version 0.10:
+version 0.11:
 
   create Bread::Board containers as normal Moose objects
 
-This software is copyright (c) 2011 by Jesse Luehrs.
+This software is copyright (c) 2012 by Jesse Luehrs.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

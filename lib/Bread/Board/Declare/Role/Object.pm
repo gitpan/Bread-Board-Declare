@@ -1,8 +1,10 @@
 package Bread::Board::Declare::Role::Object;
-BEGIN {
-  $Bread::Board::Declare::Role::Object::VERSION = '0.10';
+{
+  $Bread::Board::Declare::Role::Object::VERSION = '0.11';
 }
 use Moose::Role;
+
+use Moose::Util 'does_role';
 
 has name => (
     is      => 'rw',
@@ -19,7 +21,7 @@ after BUILD => sub {
 
     my %seen = (
         map { $_->class => $_->name }
-            grep { $_->isa('Bread::Board::Declare::ConstructorInjection') && Class::MOP::class_of($_->class) }
+            grep { $_->does('Bread::Board::Service::WithClass') && $_->has_class }
                  $meta->get_all_services
     );
     for my $service ($meta->get_all_services) {
@@ -49,6 +51,40 @@ after BUILD => sub {
             $self->add_service($service->clone);
         }
     }
+
+    for my $attr (grep { does_role($_, 'Bread::Board::Declare::Meta::Role::Attribute::Container') } $meta->get_all_attributes) {
+        my $container;
+        if ($attr->has_value($self) || $attr->has_default || $attr->has_builder) {
+            $container = $attr->get_value($self);
+            $container->name($attr->name);
+        }
+        else {
+            my $dependencies = $attr->has_dependencies
+                ? $attr->dependencies
+                : {};
+
+            if (!exists $dependencies->{name}) {
+                my $name_dep = Bread::Board::Dependency->new(
+                    service => Bread::Board::Literal->new(
+                        name  => '__ANON__',
+                        value => $attr->name,
+                    ),
+                );
+                $dependencies->{name} = $name_dep;
+            }
+
+            my $s = Bread::Board::ConstructorInjection->new(
+                name         => '__ANON__',
+                parent       => $self,
+                class        => $attr->type_constraint->class,
+                dependencies => $dependencies,
+            );
+            # need to clone this here to ensure the dependencies are also
+            # cloned
+            $container = $s->clone->get;
+        }
+        $self->add_sub_container($container);
+    }
 };
 
 no Moose::Role;
@@ -65,21 +101,9 @@ Bread::Board::Declare::Role::Object
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =for Pod::Coverage BUILD
-
-=head1 SEE ALSO
-
-Please see those modules/websites for more information related to this module.
-
-=over 4
-
-=item *
-
-L<Bread::Board::Declare|Bread::Board::Declare>
-
-=back
 
 =head1 AUTHOR
 
@@ -87,7 +111,7 @@ Jesse Luehrs <doy at tozt dot net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Jesse Luehrs.
+This software is copyright (c) 2012 by Jesse Luehrs.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Role::Service;
-BEGIN {
-  $Bread::Board::Declare::Role::Service::VERSION = '0.10';
+{
+  $Bread::Board::Declare::Role::Service::VERSION = '0.11';
 }
 use Moose::Role;
 # ABSTRACT: role for Bread::Board::Service objects
@@ -65,7 +65,7 @@ Bread::Board::Declare::Role::Service - role for Bread::Board::Service objects
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 DESCRIPTION
 
@@ -87,25 +87,13 @@ The attribute metaobject that this service is associated with.
 Returns the Bread::Board::Declare container object that this service is
 contained in.
 
-=head1 SEE ALSO
-
-Please see those modules/websites for more information related to this module.
-
-=over 4
-
-=item *
-
-L<Bread::Board::Declare|Bread::Board::Declare>
-
-=back
-
 =head1 AUTHOR
 
 Jesse Luehrs <doy at tozt dot net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Jesse Luehrs.
+This software is copyright (c) 2012 by Jesse Luehrs.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

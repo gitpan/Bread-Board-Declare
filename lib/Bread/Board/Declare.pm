@@ -1,6 +1,6 @@
 package Bread::Board::Declare;
-BEGIN {
-  $Bread::Board::Declare::VERSION = '0.10';
+{
+  $Bread::Board::Declare::VERSION = '0.11';
 }
 use Moose::Exporter;
 # ABSTRACT: create Bread::Board containers as normal Moose objects
@@ -9,18 +9,16 @@ use Bread::Board ();
 
 
 my (undef, undef, $init_meta) = Moose::Exporter->build_import_methods(
+    as_is => ['dep'],
     install => ['import', 'unimport'],
     class_metaroles => {
         attribute => ['Bread::Board::Declare::Meta::Role::Attribute'],
         class     => ['Bread::Board::Declare::Meta::Role::Class'],
         instance  => ['Bread::Board::Declare::Meta::Role::Instance'],
     },
-    (Moose->VERSION >= 1.9900
-        ? (role_metaroles => {
-               applied_attribute =>
-                   ['Bread::Board::Declare::Meta::Role::Attribute'],
-           })
-        : ()),
+    role_metaroles => {
+        applied_attribute => ['Bread::Board::Declare::Meta::Role::Attribute'],
+    },
     base_class_roles => ['Bread::Board::Declare::Role::Object'],
 );
 
@@ -38,6 +36,35 @@ sub init_meta {
 }
 
 
+sub dep {
+    if (@_ > 1) {
+        my %opts = (
+            name => '__ANON__',
+            @_,
+        );
+
+        if (exists $opts{dependencies}) {
+            confess("Dependencies are not supported for inline services");
+        }
+
+        if (exists $opts{value}) {
+            return Bread::Board::Literal->new(%opts);
+        }
+        elsif (exists $opts{block}) {
+            return Bread::Board::BlockInjection->new(%opts);
+        }
+        elsif (exists $opts{class}) {
+            return Bread::Board::ConstructorInjection->new(%opts);
+        }
+        else {
+        }
+    }
+    else {
+        return Bread::Board::Dependency->new(service_path => $_[0]);
+    }
+}
+
+
 1;
 
 __END__
@@ -49,7 +76,7 @@ Bread::Board::Declare - create Bread::Board containers as normal Moose objects
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 
@@ -73,6 +100,9 @@ version 0.10
   has tt => (
       is  => 'ro',
       isa => 'MyApp::View::TT',
+      dependencies => {
+          template_root => dep(value => './root/templates'),
+      },
   );
 
   has controller => (
@@ -129,8 +159,9 @@ C<< required => 1 >> is still valid on these attributes.
 
 Constructor parameters for services (C<dependencies>, C<lifecycle>, etc) can
 also be passed into the attribute definition; these will be forwarded to the
-service constructor. See L<Bread::Board::Declare::Meta::Role::Attribute> for
-a full list of additional parameters to C<has>.
+service constructor. See
+L<Bread::Board::Declare::Meta::Role::Attribute::Service> for a full list of
+additional parameters to C<has>.
 
 If C<< infer => 1 >> is passed in the attribute definition, the class in the
 type constraint will be introspected to find its required dependencies, and
@@ -150,18 +181,30 @@ they are explicitly disabled. In addition, multiple inheritance would just
 cause a lot of problems, so it is also disabled (although single inheritance
 and role application works properly).
 
-NOTE: When using this module in roles with Moose versions prior to 2.0, the
-attribute trait will need to be applied explicitly to attributes that should
-become services, as in:
+=head1 EXPORTS
 
-  has attr => (
-      traits => ['Service'],
-      is     => 'ro',
-      isa    => 'Str',
-      value  => 'value',
-  )
+=head2 dep
 
-=for Pod::Coverage init_meta
+  dependencies => {
+      foo => dep('foo'),
+      bar => dep(value => 'bar'),
+  }
+
+This is a helper function for specifying dependency lists. Passing a single
+argument will explicitly mark it as a dependency to be resolved by looking it
+up in the container. This isn't strictly necessary (the dependency
+specifications for L<Bread::Board> have a coercion which does this
+automatically), but being explicit can be easier to understand at times.
+
+This function can also take a hash of arguments. In that case, an anonymous
+service is created to satisfy the dependency. The hash is passed directly to
+the constructor for the appropriate service: if the C<value> parameter is
+passed, a L<Bread::Board::Literal> service will be created, if the C<block>
+parameter is passed, a L<Bread::Board::BlockInjection> service will be created,
+and if the C<class> parameter is passed, a
+L<Bread::Board::ConstructorInjection> service will be created. Note that these
+anonymous services cannot have dependencies themselves, nor can they be
+depended on by other services.
 
 =head1 BUGS
 
@@ -173,15 +216,7 @@ L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Bread-Board-Declare>.
 
 =head1 SEE ALSO
 
-Please see those modules/websites for more information related to this module.
-
-=over 4
-
-=item *
-
 L<Bread::Board>
-
-=back
 
 =head1 SUPPORT
 
@@ -211,13 +246,15 @@ L<http://search.cpan.org/dist/Bread-Board-Declare>
 
 =back
 
+=for Pod::Coverage init_meta
+
 =head1 AUTHOR
 
 Jesse Luehrs <doy at tozt dot net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Jesse Luehrs.
+This software is copyright (c) 2012 by Jesse Luehrs.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
