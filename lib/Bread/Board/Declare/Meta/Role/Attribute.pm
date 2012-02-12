@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Meta::Role::Attribute;
 {
-  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.11';
+  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.12';
 }
 use Moose::Role;
 # ABSTRACT: base attribute metarole for Bread::Board::Declare
@@ -59,7 +59,7 @@ Bread::Board::Declare::Meta::Role::Attribute - base attribute metarole for Bread
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 ATTRIBUTES
 

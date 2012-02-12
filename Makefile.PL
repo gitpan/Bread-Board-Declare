@@ -24,10 +24,11 @@ my %WriteMakefileArgs = (
   "NAME" => "Bread::Board::Declare",
   "PREREQ_PM" => {
     "Bread::Board" => "0.22",
+    "Class::Load" => "0.07",
     "List::MoreUtils" => 0,
     "Moose" => "2.0200"
   },
-  "VERSION" => "0.11",
+  "VERSION" => "0.12",
   "test" => {
     "TESTS" => "t/*.t"
   }

@@ -1,12 +1,13 @@
 package Bread::Board::Declare::Meta::Role::Attribute::Service;
 {
-  $Bread::Board::Declare::Meta::Role::Attribute::Service::VERSION = '0.11';
+  $Bread::Board::Declare::Meta::Role::Attribute::Service::VERSION = '0.12';
 }
 use Moose::Role;
 Moose::Util::meta_attribute_alias('Service');
 # ABSTRACT: attribute metarole for service attributes in Bread::Board::Declare
 
 use Bread::Board::Types;
+use Class::Load qw(load_class);
 use List::MoreUtils qw(any);
 
 use Bread::Board::Declare::BlockInjection;
@@ -98,7 +99,7 @@ after attach_to_class => sub {
     if ($self->has_block) {
         if ($tc && $tc->isa('Moose::Meta::TypeConstraint::Class')) {
             %params = (%params, class => $tc->class);
-            Class::MOP::load_class($tc->class);
+            load_class($tc->class);
         }
         $service = Bread::Board::Declare::BlockInjection->new(
             %params,
@@ -112,7 +113,7 @@ after attach_to_class => sub {
         );
     }
     elsif ($tc && $tc->isa('Moose::Meta::TypeConstraint::Class')) {
-        Class::MOP::load_class($tc->class);
+        load_class($tc->class);
         $service = Bread::Board::Declare::ConstructorInjection->new(
             %params,
             class => $tc->class,
@@ -218,7 +219,7 @@ Bread::Board::Declare::Meta::Role::Attribute::Service - attribute metarole for s
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 DESCRIPTION
 

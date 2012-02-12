@@ -1,6 +1,6 @@
 package Bread::Board::Declare::Meta::Role::Attribute::Container;
 {
-  $Bread::Board::Declare::Meta::Role::Attribute::Container::VERSION = '0.11';
+  $Bread::Board::Declare::Meta::Role::Attribute::Container::VERSION = '0.12';
 }
 use Moose::Role;
 Moose::Util::meta_attribute_alias('Container');
@@ -87,7 +87,7 @@ Bread::Board::Declare::Meta::Role::Attribute::Container - attribute metarole for
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 DESCRIPTION
 
