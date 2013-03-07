@@ -1,6 +1,9 @@
 package Bread::Board::Declare::Meta::Role::Class;
+BEGIN {
+  $Bread::Board::Declare::Meta::Role::Class::AUTHORITY = 'cpan:DOY';
+}
 {
-  $Bread::Board::Declare::Meta::Role::Class::VERSION = '0.12';
+  $Bread::Board::Declare::Meta::Role::Class::VERSION = '0.13';
 }
 use Moose::Role;
 # ABSTRACT: class metarole for Bread::Board::Declare
@@ -37,6 +40,7 @@ no Moose::Role;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -45,7 +49,7 @@ Bread::Board::Declare::Meta::Role::Class - class metarole for Bread::Board::Decl
 
 =head1 VERSION
 
-version 0.12
+version 0.13
 
 =head1 DESCRIPTION
 
@@ -64,10 +68,9 @@ Jesse Luehrs <doy at tozt dot net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Jesse Luehrs.
+This software is copyright (c) 2013 by Jesse Luehrs.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

@@ -1,6 +1,9 @@
 package Bread::Board::Declare::Role::Service;
+BEGIN {
+  $Bread::Board::Declare::Role::Service::AUTHORITY = 'cpan:DOY';
+}
 {
-  $Bread::Board::Declare::Role::Service::VERSION = '0.12';
+  $Bread::Board::Declare::Role::Service::VERSION = '0.13';
 }
 use Moose::Role;
 # ABSTRACT: role for Bread::Board::Service objects
@@ -57,6 +60,7 @@ no Moose::Role;
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -65,7 +69,7 @@ Bread::Board::Declare::Role::Service - role for Bread::Board::Service objects
 
 =head1 VERSION
 
-version 0.12
+version 0.13
 
 =head1 DESCRIPTION
 
@@ -93,10 +97,9 @@ Jesse Luehrs <doy at tozt dot net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Jesse Luehrs.
+This software is copyright (c) 2013 by Jesse Luehrs.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

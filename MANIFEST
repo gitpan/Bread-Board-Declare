@@ -40,10 +40,10 @@ t/more-inheritance.t
 t/multiple-instantiation.t
 t/no-service.t
 t/parameters.t
-t/release-eol.t
-t/release-no-tabs.t
-t/release-pod-coverage.t
-t/release-pod-syntax.t
 t/roles.t
 t/subcontainers.t
 t/type-checks.t
+xt/release/eol.t
+xt/release/no-tabs.t
+xt/release/pod-coverage.t
+xt/release/pod-syntax.t
