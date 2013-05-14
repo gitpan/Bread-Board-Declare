@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Declare::Role::Object::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::Role::Object::VERSION = '0.13';
+  $Bread::Board::Declare::Role::Object::VERSION = '0.14';
 }
 use Moose::Role;
 
@@ -105,7 +105,7 @@ Bread::Board::Declare::Role::Object
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =for Pod::Coverage BUILD
 

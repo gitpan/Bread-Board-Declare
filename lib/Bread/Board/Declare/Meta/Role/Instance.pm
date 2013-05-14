@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Declare::Meta::Role::Instance::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::Meta::Role::Instance::VERSION = '0.13';
+  $Bread::Board::Declare::Meta::Role::Instance::VERSION = '0.14';
 }
 use Moose::Role;
 
@@ -25,7 +25,7 @@ Bread::Board::Declare::Meta::Role::Instance
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =for Pod::Coverage inline_get_is_lvalue
 

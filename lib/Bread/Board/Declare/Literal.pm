@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Declare::Literal::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::Literal::VERSION = '0.13';
+  $Bread::Board::Declare::Literal::VERSION = '0.14';
 }
 use Moose;
 # ABSTRACT: subclass of Bread::Board::Literal for Bread::Board::Declare
@@ -27,7 +27,7 @@ Bread::Board::Declare::Literal - subclass of Bread::Board::Literal for Bread::Bo
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 DESCRIPTION
 

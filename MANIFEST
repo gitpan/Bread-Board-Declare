@@ -32,6 +32,7 @@ t/infer.t
 t/inheritance.t
 t/inline-services.t
 t/inlining.t
+t/lib/FromDisk.pm
 t/lib/Inferred/Bar.pm
 t/lib/Inferred/Foo.pm
 t/lifecycle.t

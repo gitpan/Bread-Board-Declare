@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Declare::Meta::Role::Attribute::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.13';
+  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.14';
 }
 use Moose::Role;
 # ABSTRACT: base attribute metarole for Bread::Board::Declare
@@ -63,7 +63,7 @@ Bread::Board::Declare::Meta::Role::Attribute - base attribute metarole for Bread
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 ATTRIBUTES
 

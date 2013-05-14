@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Declare::BlockInjection::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::BlockInjection::VERSION = '0.13';
+  $Bread::Board::Declare::BlockInjection::VERSION = '0.14';
 }
 use Moose;
 # ABSTRACT: subclass of Bread::Board::BlockInjection for Bread::Board::Declare
@@ -27,7 +27,7 @@ Bread::Board::Declare::BlockInjection - subclass of Bread::Board::BlockInjection
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 DESCRIPTION
 

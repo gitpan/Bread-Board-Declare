@@ -3,12 +3,13 @@ BEGIN {
   $Bread::Board::Declare::Meta::Role::Class::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::Meta::Role::Class::VERSION = '0.13';
+  $Bread::Board::Declare::Meta::Role::Class::VERSION = '0.14';
 }
 use Moose::Role;
 # ABSTRACT: class metarole for Bread::Board::Declare
 
 use Bread::Board::Service;
+use Class::Load qw(load_class);
 use List::MoreUtils qw(any);
 
 
@@ -27,6 +28,8 @@ before superclasses => sub {
 
     die "Multiple inheritance is not supported for Bread::Board::Declare classes"
         if @_ > 1;
+
+    load_class($_[0]);
 
     return if $_[0]->isa('Bread::Board::Container');
 
@@ -49,7 +52,7 @@ Bread::Board::Declare::Meta::Role::Class - class metarole for Bread::Board::Decl
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 DESCRIPTION
 

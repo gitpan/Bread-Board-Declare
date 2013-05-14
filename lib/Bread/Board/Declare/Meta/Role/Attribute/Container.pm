@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Declare::Meta::Role::Attribute::Container::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::Meta::Role::Attribute::Container::VERSION = '0.13';
+  $Bread::Board::Declare::Meta::Role::Attribute::Container::VERSION = '0.14';
 }
 use Moose::Role;
 Moose::Util::meta_attribute_alias('Container');
@@ -91,7 +91,7 @@ Bread::Board::Declare::Meta::Role::Attribute::Container - attribute metarole for
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 DESCRIPTION
 
