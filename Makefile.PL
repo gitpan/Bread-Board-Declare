@@ -10,26 +10,40 @@ use ExtUtils::MakeMaker 6.30;
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "create Bread::Board containers as normal Moose objects",
-  "AUTHOR" => "Jesse Luehrs <doy at tozt dot net>",
+  "AUTHOR" => "Jesse Luehrs <doy\@tozt.net>",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
   },
   "DISTNAME" => "Bread-Board-Declare",
   "EXE_FILES" => [],
-  "LICENSE" => "perl",
+  "LICENSE" => "mit",
   "NAME" => "Bread::Board::Declare",
   "PREREQ_PM" => {
-    "Bread::Board" => "0.22",
-    "Class::Load" => "0.07",
-    "List::MoreUtils" => 0,
-    "Moose" => "2.0200"
+    "Bread::Board" => 0,
+    "Bread::Board::BlockInjection" => 0,
+    "Bread::Board::ConstructorInjection" => 0,
+    "Bread::Board::Literal" => 0,
+    "Bread::Board::Service" => 0,
+    "Bread::Board::Types" => 0,
+    "Class::Load" => 0,
+    "Moose" => 0,
+    "Moose::Exporter" => 0,
+    "Moose::Role" => 0,
+    "Moose::Util" => 0
   },
   "TEST_REQUIRES" => {
+    "File::Find" => 0,
+    "File::Temp" => 0,
+    "Moose::Util::TypeConstraints" => 0,
     "Test::Fatal" => 0,
-    "Test::More" => "0.88"
+    "Test::Moose" => 0,
+    "Test::More" => "0.88",
+    "lib" => 0,
+    "strict" => 0,
+    "warnings" => 0
   },
-  "VERSION" => "0.14",
+  "VERSION" => "0.15",
   "test" => {
     "TESTS" => "t/*.t"
   }

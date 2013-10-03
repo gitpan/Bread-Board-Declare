@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Declare::Role::Object::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::Role::Object::VERSION = '0.14';
+  $Bread::Board::Declare::Role::Object::VERSION = '0.15';
 }
 use Moose::Role;
 
@@ -29,11 +29,12 @@ after BUILD => sub {
     );
     for my $service ($meta->get_all_services) {
         if ($service->isa('Bread::Board::Declare::BlockInjection')) {
+            Scalar::Util::weaken(my $weakself = $self);
             my $block = $service->block;
             $self->add_service(
                 $service->clone(
                     block => sub {
-                        $block->(@_, $self)
+                        $block->(@_, $weakself)
                     },
                 )
             );
@@ -105,19 +106,20 @@ Bread::Board::Declare::Role::Object
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =for Pod::Coverage BUILD
 
 =head1 AUTHOR
 
-Jesse Luehrs <doy at tozt dot net>
+Jesse Luehrs <doy@tozt.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Jesse Luehrs.
+This software is Copyright (c) 2013 by Jesse Luehrs.
 
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
+This is free software, licensed under:
+
+  The MIT (X11) License
 
 =cut

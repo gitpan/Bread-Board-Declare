@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Declare::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::VERSION = '0.14';
+  $Bread::Board::Declare::VERSION = '0.15';
 }
 use Moose::Exporter;
 # ABSTRACT: create Bread::Board containers as normal Moose objects
@@ -80,7 +80,7 @@ Bread::Board::Declare - create Bread::Board containers as normal Moose objects
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head1 SYNOPSIS
 
@@ -214,9 +214,8 @@ depended on by other services.
 
 No known bugs.
 
-Please report any bugs through RT: email
-C<bug-bread-board-declare at rt.cpan.org>, or browse to
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Bread-Board-Declare>.
+Please report any bugs to GitHub Issues at
+L<https://github.com/doy/bread-board-declare/issues>.
 
 =head1 SEE ALSO
 
@@ -232,21 +231,21 @@ You can also look for information at:
 
 =over 4
 
-=item * AnnoCPAN: Annotated CPAN documentation
+=item * MetaCPAN
 
-L<http://annocpan.org/dist/Bread-Board-Declare>
+L<https://metacpan.org/release/Bread-Board-Declare>
 
-=item * CPAN Ratings
+=item * Github
 
-L<http://cpanratings.perl.org/d/Bread-Board-Declare>
+L<https://github.com/doy/bread-board-declare>
 
 =item * RT: CPAN's request tracker
 
 L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Bread-Board-Declare>
 
-=item * Search CPAN
+=item * CPAN Ratings
 
-L<http://search.cpan.org/dist/Bread-Board-Declare>
+L<http://cpanratings.perl.org/d/Bread-Board-Declare>
 
 =back
 
@@ -254,13 +253,14 @@ L<http://search.cpan.org/dist/Bread-Board-Declare>
 
 =head1 AUTHOR
 
-Jesse Luehrs <doy at tozt dot net>
+Jesse Luehrs <doy@tozt.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Jesse Luehrs.
+This software is Copyright (c) 2013 by Jesse Luehrs.
 
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
+This is free software, licensed under:
+
+  The MIT (X11) License
 
 =cut

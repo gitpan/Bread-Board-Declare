@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Declare::Literal::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::Literal::VERSION = '0.14';
+  $Bread::Board::Declare::Literal::VERSION = '0.15';
 }
 use Moose;
 # ABSTRACT: subclass of Bread::Board::Literal for Bread::Board::Declare
@@ -27,7 +27,7 @@ Bread::Board::Declare::Literal - subclass of Bread::Board::Literal for Bread::Bo
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head1 DESCRIPTION
 
@@ -37,13 +37,14 @@ details.
 
 =head1 AUTHOR
 
-Jesse Luehrs <doy at tozt dot net>
+Jesse Luehrs <doy@tozt.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Jesse Luehrs.
+This software is Copyright (c) 2013 by Jesse Luehrs.
 
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
+This is free software, licensed under:
+
+  The MIT (X11) License
 
 =cut

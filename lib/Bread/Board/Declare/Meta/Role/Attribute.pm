@@ -3,12 +3,11 @@ BEGIN {
   $Bread::Board::Declare::Meta::Role::Attribute::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.14';
+  $Bread::Board::Declare::Meta::Role::Attribute::VERSION = '0.15';
 }
 use Moose::Role;
 # ABSTRACT: base attribute metarole for Bread::Board::Declare
 
-use List::MoreUtils 'any';
 use Moose::Util 'does_role', 'find_meta';
 
 use Bread::Board::Declare::Meta::Role::Attribute::Container;
@@ -63,7 +62,7 @@ Bread::Board::Declare::Meta::Role::Attribute - base attribute metarole for Bread
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head1 ATTRIBUTES
 
@@ -73,13 +72,14 @@ Whether or not to create a service for this attribute. Defaults to true.
 
 =head1 AUTHOR
 
-Jesse Luehrs <doy at tozt dot net>
+Jesse Luehrs <doy@tozt.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Jesse Luehrs.
+This software is Copyright (c) 2013 by Jesse Luehrs.
 
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
+This is free software, licensed under:
+
+  The MIT (X11) License
 
 =cut

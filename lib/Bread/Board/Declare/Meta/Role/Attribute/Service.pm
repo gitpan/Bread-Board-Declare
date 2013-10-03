@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Declare::Meta::Role::Attribute::Service::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::Meta::Role::Attribute::Service::VERSION = '0.14';
+  $Bread::Board::Declare::Meta::Role::Attribute::Service::VERSION = '0.15';
 }
 use Moose::Role;
 Moose::Util::meta_attribute_alias('Service');
@@ -11,7 +11,6 @@ Moose::Util::meta_attribute_alias('Service');
 
 use Bread::Board::Types;
 use Class::Load qw(load_class);
-use List::MoreUtils qw(any);
 
 use Bread::Board::Declare::BlockInjection;
 use Bread::Board::Declare::ConstructorInjection;
@@ -123,10 +122,11 @@ after attach_to_class => sub {
         );
     }
     else {
+        my $name = $self->name;
         $service = Bread::Board::Declare::BlockInjection->new(
             %params,
             block => sub {
-                die "Attribute " . $self->name . " did not specify a service."
+                die "Attribute $name did not specify a service."
                   . " It must be given a value through the constructor or"
                   . " writer method before it can be resolved."
             },
@@ -147,8 +147,8 @@ after _process_options => sub {
                || exists $opts->{value};
 
     # XXX: uggggh
-    return if any { $_ eq 'Moose::Meta::Attribute::Native::Trait::String'
-                 || $_ eq 'Moose::Meta::Attribute::Native::Trait::Counter' }
+    return if grep { $_ eq 'Moose::Meta::Attribute::Native::Trait::String'
+                  || $_ eq 'Moose::Meta::Attribute::Native::Trait::Counter' }
               @{ $opts->{traits} };
 
     my $exists = exists($opts->{default}) ? 'default' : 'builder';
@@ -223,7 +223,7 @@ Bread::Board::Declare::Meta::Role::Attribute::Service - attribute metarole for s
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head1 DESCRIPTION
 
@@ -273,13 +273,14 @@ The service object that is associated with this attribute.
 
 =head1 AUTHOR
 
-Jesse Luehrs <doy at tozt dot net>
+Jesse Luehrs <doy@tozt.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Jesse Luehrs.
+This software is Copyright (c) 2013 by Jesse Luehrs.
 
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
+This is free software, licensed under:
+
+  The MIT (X11) License
 
 =cut
