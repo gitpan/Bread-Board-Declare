@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Declare::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::VERSION = '0.15';
+  $Bread::Board::Declare::VERSION = '0.16';
 }
 use Moose::Exporter;
 # ABSTRACT: create Bread::Board containers as normal Moose objects
@@ -80,7 +80,7 @@ Bread::Board::Declare - create Bread::Board containers as normal Moose objects
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 SYNOPSIS
 
@@ -257,7 +257,7 @@ Jesse Luehrs <doy@tozt.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2013 by Jesse Luehrs.
+This software is Copyright (c) 2014 by Jesse Luehrs.
 
 This is free software, licensed under:
 

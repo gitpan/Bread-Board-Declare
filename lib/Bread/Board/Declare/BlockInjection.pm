@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Declare::BlockInjection::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::BlockInjection::VERSION = '0.15';
+  $Bread::Board::Declare::BlockInjection::VERSION = '0.16';
 }
 use Moose;
 # ABSTRACT: subclass of Bread::Board::BlockInjection for Bread::Board::Declare
@@ -27,7 +27,7 @@ Bread::Board::Declare::BlockInjection - subclass of Bread::Board::BlockInjection
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 DESCRIPTION
 
@@ -41,7 +41,7 @@ Jesse Luehrs <doy@tozt.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2013 by Jesse Luehrs.
+This software is Copyright (c) 2014 by Jesse Luehrs.
 
 This is free software, licensed under:
 

@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Declare::Role::Service::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::Role::Service::VERSION = '0.15';
+  $Bread::Board::Declare::Role::Service::VERSION = '0.16';
 }
 use Moose::Role;
 # ABSTRACT: role for Bread::Board::Service objects
@@ -69,7 +69,7 @@ Bread::Board::Declare::Role::Service - role for Bread::Board::Service objects
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 DESCRIPTION
 
@@ -97,7 +97,7 @@ Jesse Luehrs <doy@tozt.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2013 by Jesse Luehrs.
+This software is Copyright (c) 2014 by Jesse Luehrs.
 
 This is free software, licensed under:
 

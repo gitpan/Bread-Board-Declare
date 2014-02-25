@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Declare::Meta::Role::Attribute::Service::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::Meta::Role::Attribute::Service::VERSION = '0.15';
+  $Bread::Board::Declare::Meta::Role::Attribute::Service::VERSION = '0.16';
 }
 use Moose::Role;
 Moose::Util::meta_attribute_alias('Service');
@@ -223,7 +223,7 @@ Bread::Board::Declare::Meta::Role::Attribute::Service - attribute metarole for s
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 DESCRIPTION
 
@@ -277,7 +277,7 @@ Jesse Luehrs <doy@tozt.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2013 by Jesse Luehrs.
+This software is Copyright (c) 2014 by Jesse Luehrs.
 
 This is free software, licensed under:
 

@@ -3,7 +3,7 @@ BEGIN {
   $Bread::Board::Declare::Role::Object::AUTHORITY = 'cpan:DOY';
 }
 {
-  $Bread::Board::Declare::Role::Object::VERSION = '0.15';
+  $Bread::Board::Declare::Role::Object::VERSION = '0.16';
 }
 use Moose::Role;
 
@@ -106,7 +106,7 @@ Bread::Board::Declare::Role::Object
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =for Pod::Coverage BUILD
 
@@ -116,7 +116,7 @@ Jesse Luehrs <doy@tozt.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2013 by Jesse Luehrs.
+This software is Copyright (c) 2014 by Jesse Luehrs.
 
 This is free software, licensed under:
 
